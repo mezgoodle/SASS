@@ -1,14 +1,14 @@
-var gulp = require('gulp'), // Подключаем Gulp
-		sass = require('gulp-sass'); // Подключаем Sass пакет
+const gulp = require('gulp'), // Import Gulp
+	  sass = require('gulp-sass'); // Import sass package
 
-gulp.task('sass', function() { // Создаем таск "sass"
-	return gulp.src(['sass/**/*.sass', 'sass/**/*.scss']) // Берем источник
-		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) // Преобразуем Sass в CSS посредством gulp-sass
-		.pipe(gulp.dest('css')) // Выгружаем результата в папку css
+gulp.task('sass', function() { // Create task "sass"
+	return gulp.src(['sass/**/*.sass', 'sass/**/*.scss']) // Take stream
+		.pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError)) // Convert Sass to CSS by gulp-sass
+		.pipe(gulp.dest('css')) // Get results in folder css
 	});
 
 gulp.task('watch', function() {
-	gulp.watch(['sass/**/*.sass', 'sass/**/*.scss'], ['sass']); // Наблюдение за sass файлами в папке sass
+	gulp.watch(['sass/**/*.sass', 'sass/**/*.scss'], ['sass']); // Watching for sass files in folder sass
 });
 
 gulp.task('default', ['watch']);
